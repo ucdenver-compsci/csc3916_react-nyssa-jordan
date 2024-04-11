@@ -30,28 +30,31 @@ class MovieList extends Component {
 
     render() {
         const MovieListCarousel = ({movieList}) => {
-            if (!movieList) {
+
+            if (movieList.length === 0) {
                 return <div>Loading....</div>
             }
 
             return (
-                <div></div>
-                // <Carousel onSelect={this.handleSelect}>
-                //     {movieList.map((movie) =>
-                //         <Carousel.Item key={movie._id}>
-                //             <div>
-                //                 <LinkContainer to={'/movie/'+movie._id} onClick={()=>this.handleClick(movie)}>
-                //                     <Nav.Link><Image className="image" src={movie.imageUrl} thumbnail /></Nav.Link>
-                //                 </LinkContainer>
-                //             </div>
-                //             <Carousel.Caption>
-                //                 <h3>{movie.title}</h3>
-                //                 <BsStarFill glyph={'star'} /> {movie.avgRating} &nbsp;&nbsp; {movie.releaseDate}
-                //             </Carousel.Caption>
-                //         </Carousel.Item>
-                //     )}
+                <div>
+                <Carousel onSelect={this.handleSelect}>
+                    {movieList.movies.map((movie) =>
+                        <Carousel.Item key={movie._id}>
+                            <div>
+                                <LinkContainer to={'/movie/'+movie._id} onClick={()=>this.handleClick(movie)}>
+                                    <Nav.Link><Image className="image" src={movie.imageUrl} style={{ maxWidth: '30%', height: 'auto' }} /></Nav.Link>
+                                    
+                                </LinkContainer>
+                            </div>
+                            <Carousel.Caption>
+                                <h3>{movie.title}</h3>
+                                <BsStarFill glyph={'star'} /> {movie.avgRating} &nbsp;&nbsp; {movie.releaseDate}
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    )}
 
-                // </Carousel>
+                </Carousel>
+                </div>
             )
         }
 

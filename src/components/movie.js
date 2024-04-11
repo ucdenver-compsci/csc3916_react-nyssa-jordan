@@ -12,7 +12,7 @@ function Movie(props) {
     const movieId = params.movieId;
     console.log(movieId);
     const dispatch = useDispatch();
-    if (selectedMovie == null) {
+    if (selectedMovie) {
         dispatch(fetchMovie(movieId));
     }
 

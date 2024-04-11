@@ -61,6 +61,7 @@ export function fetchMovies() {
             },
             mode: 'cors'
         }).then((response) => {
+            console.log(response.status)
             if (!response.ok) {
                 throw Error(response.statusText);
             }
