@@ -15,22 +15,38 @@ class AddReview extends Component {
         this.setState({ [name]: value });
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault();
         const { review, rating } = this.state;
-        const { submitReview, movieId, username } = this.props;
+        const { movieId, username } = this.props;
+        
+        let payload = {
+            review,
+            rating,
+            movieId,
+            username,
+        };
+        const requestOptions = {
+            method: 'POST',
+            headers: 
+            { 
+                'Content-Type': 'application/json', 
+                'Authorization': localStorage.getItem('token')
+            },
+            body: JSON.stringify( payload )
+        };
+        const response = await fetch('https://csc3916-assignment4-nyssa-jordan.onrender.com/reviews', requestOptions);
+        const data = await response.json();
+        window.location.reload();
 
-        // Add console logs to check the values
-        console.log('Review:', review);
-        console.log('Rating:', rating);
-        console.log('Movie ID:', movieId);
-        console.log('Username:', username);
-
-        // Call an action to submit the review data
-        submitReview(review, rating, movieId, username);
-
-        // Reset the form
-        this.setState({ review: '', rating: 0 });
+        // // Call the submitReview action with individual parameters
+        // try {
+        //     await submitReview(review, rating, movieId, username);
+        //     // Reset the form
+        //     this.setState({ review: '', rating: 0 });
+        // } catch (error) {
+        //     console.error('Error submitting review:', error);
+        // }
     }
     
 
@@ -70,3 +86,4 @@ class AddReview extends Component {
 }
 
 export default AddReview;
+

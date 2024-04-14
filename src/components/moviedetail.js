@@ -23,8 +23,6 @@ class MovieDetail extends Component {
             if (!this.props.selectedMovie.title) {
                 return <div><font color={"black"}>Need Title</font></div>;
             }
-            console.log("selected movie", this.props);
-            console.log("movie rating", this.props.selectedMovie.average_rating);
 
             return (
                 <Card>
