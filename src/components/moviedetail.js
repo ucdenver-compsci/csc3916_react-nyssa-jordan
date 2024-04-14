@@ -16,6 +16,7 @@ class MovieDetail extends Component {
     }
 
     render() {
+        console.log("get the selected movie")
         const DetailInfo = () => {
             if (!this.props.selectedMovie) {
                 return <div><font color={"black"}>Loading....</font></div>;
@@ -23,6 +24,7 @@ class MovieDetail extends Component {
             if (!this.props.selectedMovie.title) {
                 return <div><font color={"black"}>Need Title</font></div>;
             }
+            console.log(this.props.selectedMovie)
 
             return (
                 <Card>
