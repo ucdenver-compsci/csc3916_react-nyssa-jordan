@@ -3,6 +3,7 @@ import actionTypes from '../constants/actionTypes';
 const env = process.env;
 
 function moviesFetched(movies) {
+    console.log(movies);
     return {
         type: actionTypes.FETCH_MOVIES,
         movies: movies
@@ -10,6 +11,7 @@ function moviesFetched(movies) {
 }
 
 function movieFetched(movie) {
+    console.log(movie);
     return {
         type: actionTypes.FETCH_MOVIE,
         selectedMovie: movie
