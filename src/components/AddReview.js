@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
+const env = process.env;
 class AddReview extends Component {
     constructor(props) {
         super(props);
@@ -35,7 +36,7 @@ class AddReview extends Component {
             },
             body: JSON.stringify( payload )
         };
-        const response = await fetch('https://csc3916-assignment4-nyssa-jordan.onrender.com/reviews', requestOptions);
+        const response = await fetch(env.REACT_APP_API_URL+"/reviews", requestOptions);
         const data = await response.json();
         window.location.reload();
 
